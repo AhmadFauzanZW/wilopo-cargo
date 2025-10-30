@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  passwordHash String     @map("password_hash")
+  fullName     String     @map("full_name")
+  companyName  String?    @map("company_name")
+  phone        String?
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  
+  shipments    Shipment[]
+
+  @@map("users")
+}
+
+enum ShipmentStatus {
+  PICKED_UP
+  IN_WAREHOUSE
+  IN_TRANSIT
+  AT_PORT
+  CUSTOMS_CLEARANCE
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+
+  @@map("shipment_status")
+}
+
+model Shipment {
+  id                Int       @id @default(autoincrement())
+  userId            Int       @map("user_id")
+  trackingNumber    String    @unique @map("tracking_number")
+  origin            String
+  destination       String
+  status            ShipmentStatus @default(PICKED_UP)
+  weight            Decimal   @db.Decimal(10, 2)
+  volume            Decimal   @db.Decimal(10, 3)
+  estimatedCost     Decimal?  @map("estimated_cost") @db.Decimal(12, 2)
+  estimatedArrival  DateTime? @map("estimated_arrival")
+  senderName        String?   @map("sender_name")
+  senderAddress     String?   @map("sender_address")
+  receiverName      String?   @map("receiver_name")
+  receiverAddress   String?   @map("receiver_address")
+  receiverPhone     String?   @map("receiver_phone")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  statusHistory     ShipmentStatusHistory[]
+  documents         Document[]
+
+  @@map("shipments")
+}
+
+model ShipmentStatusHistory {
+  id          Int       @id @default(autoincrement())
+  shipmentId  Int       @map("shipment_id")
+  status      String
+  description String?
+  location    String?
+  timestamp   DateTime  @default(now())
+  
+  shipment    Shipment  @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@map("shipment_status_history")
+}
+
+enum DocumentType {
+  INVOICE
+  PACKING_LIST
+  BILL_OF_LADING
+  CERTIFICATE
+  CUSTOMS_DECLARATION
+  OTHER
+
+  @@map("document_type")
+}
+
+model Document {
+  id            Int          @id @default(autoincrement())
+  shipmentId    Int          @map("shipment_id")
+  documentType  DocumentType @map("document_type")
+  fileUrl       String       @map("file_url")
+  originalName  String       @map("original_name")
+  fileSize      Int?         @map("file_size")
+  uploadedAt    DateTime     @default(now()) @map("uploaded_at")
+  
+  shipment      Shipment     @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@map("documents")
+}
