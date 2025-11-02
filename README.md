@@ -36,10 +36,10 @@
 ### Login & Register
 
 #### Login
-![Login Page](login.png)
+![Login Page](docs/screenshots/login.png)
 
 #### Register
-![Register Page](register.png)
+![Register Page](docs/screenshots/register.png)
 
 
 ### User Role
