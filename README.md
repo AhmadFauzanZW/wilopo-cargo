@@ -148,7 +148,7 @@ npm run dev
   - Email: `demo@wilopocargo.com`
   - Password: `password123`
 
-For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
+For detailed setup instructions, see [SETUP_GUIDE.md](./docs/SETUP_GUIDE.md)
 
 ## 🎯 Feature Checklist
 
@@ -214,15 +214,15 @@ For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
 
 ## 📚 Documentation
 
-- [📚 Documentation Index](DOCUMENTATION_INDEX.md) - **Start here!** Complete guide to all docs
-- [🎬 Demo Flow Guide](DEMO_FLOW.md) - **NEW!** User & Admin demo workflows
-- [📖 Setup Guide](SETUP_GUIDE.md) - Detailed installation instructions
-- [📡 API Documentation](API_DOCUMENTATION.md) - Complete API reference
-- [📋 Project Summary](PROJECT_SUMMARY.md) - Implementation details
-- [📁 File Structure](FILE_STRUCTURE.md) - Code organization
-- [🧪 Testing Checklist](TESTING_CHECKLIST.md) - QA procedures
-- [📝 Project Brief](project-brief.md) - Original specification
-- [⚡ Advanced Features Summary](ADVANCED_FEATURES_SUMMARY.md) - Guide to advanced features
+- [📚 Documentation Index](./docs/DOCUMENTATION_INDEX.md) - **Start here!** Complete guide to all docs
+- [🎬 Demo Flow Guide](./docs/DEMO_FLOW.md) - **NEW!** User & Admin demo workflows
+- [📖 Setup Guide](./docs/SETUP_GUIDE.md) - Detailed installation instructions
+- [📡 API Documentation](./docs/API_DOCUMENTATION.md) - Complete API reference
+- [📋 Project Summary](./docs/PROJECT_SUMMARY.md) - Implementation details
+- [📁 File Structure](./docs/FILE_STRUCTURE.md) - Code organization
+- [🧪 Testing Checklist](./docs/TESTING_CHECKLIST.md) - QA procedures
+- [📝 Project Brief](./docs/project-brief.md) - Original specification
+- [⚡ Advanced Features Summary](./docs/ADVANCED_FEATURES_SUMMARY.md) - Guide to advanced features
 
 ## 🧪 Demo Data
 
@@ -248,8 +248,8 @@ Proprietary - Wilopo Cargo © 2025. All rights reserved.
 ## 📞 Support
 
 For issues or questions:
-1. Check the [Setup Guide](SETUP_GUIDE.md)
-2. Review the [API Documentation](API_DOCUMENTATION.md)
+1. Check the [Setup Guide](./docs/SETUP_GUIDE.md)
+2. Review the [API Documentation](./docs/API_DOCUMENTATION.md)
 3. Contact the development team
 
 ---
