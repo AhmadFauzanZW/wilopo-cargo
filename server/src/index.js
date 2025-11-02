@@ -10,6 +10,10 @@ const authRoutes = require('./routes/authRoutes');
 const shipmentRoutes = require('./routes/shipmentRoutes');
 const documentRoutes = require('./routes/documentRoutes');
 const calculatorRoutes = require('./routes/calculatorRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
+const exportRoutes = require('./routes/exportRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 // Import middleware
 const { errorHandler, notFound } = require('./middleware/errorHandler');
@@ -38,6 +42,10 @@ app.get('/health', (req, res) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/shipments', shipmentRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/export', exportRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api', documentRoutes);
 app.use('/api', calculatorRoutes);
 

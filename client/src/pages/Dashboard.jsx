@@ -26,7 +26,9 @@ const Dashboard = () => {
         shipmentsAPI.getStats(),
       ]);
       
-      setShipments(shipmentsRes.data);
+      // Handle new API response structure with pagination
+      const shipmentsData = shipmentsRes.data.shipments || shipmentsRes.data;
+      setShipments(Array.isArray(shipmentsData) ? shipmentsData : []);
       setStats(statsRes.data);
     } catch (err) {
       setError('Failed to load dashboard data');

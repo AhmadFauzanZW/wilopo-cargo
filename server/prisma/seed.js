@@ -6,6 +6,23 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Starting seed...');
 
+  // Create admin user
+  const adminPassword = await bcrypt.hash('admin123', 10);
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@wilopocargo.com' },
+    update: {},
+    create: {
+      email: 'admin@wilopocargo.com',
+      passwordHash: adminPassword,
+      fullName: 'Admin User',
+      companyName: 'Wilopo Cargo',
+      phone: '+62 811 1111 1111',
+      role: 'ADMIN',
+    },
+  });
+
+  console.log('✅ Created admin user:', admin.email);
+
   // Create demo user
   const hashedPassword = await bcrypt.hash('password123', 10);
   
@@ -18,6 +35,7 @@ async function main() {
       fullName: 'Demo User',
       companyName: 'Demo Trading Company',
       phone: '+62 812 3456 7890',
+      role: 'USER',
     },
   });
 
@@ -183,9 +201,15 @@ async function main() {
   ]);
 
   console.log('\n📦 Seed completed successfully!');
-  console.log('\n🔐 Demo Login Credentials:');
+  console.log('\n🔐 Login Credentials:');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('👑 Admin User:');
+  console.log('   Email: admin@wilopocargo.com');
+  console.log('   Password: admin123');
+  console.log('\n👤 Demo User:');
   console.log('   Email: demo@wilopocargo.com');
   console.log('   Password: password123');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 }
 
 main()

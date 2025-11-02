@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Package, Calculator, LogOut, User } from 'lucide-react';
+import { Package, Calculator, LogOut, User, BarChart3, Shield } from 'lucide-react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Layout = ({ children }) => {
   const { user, logout } = useAuth();
@@ -37,10 +38,29 @@ const Layout = ({ children }) => {
                   <Calculator className="h-4 w-4" />
                   <span>Calculator</span>
                 </Link>
+                {user?.role?.toUpperCase() === 'ADMIN' && (
+                  <>
+                    <Link
+                      to="/analytics"
+                      className="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-1"
+                    >
+                      <BarChart3 className="h-4 w-4" />
+                      <span>Analytics</span>
+                    </Link>
+                    <Link
+                      to="/admin"
+                      className="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-1"
+                    >
+                      <Shield className="h-4 w-4" />
+                      <span>Admin</span>
+                    </Link>
+                  </>
+                )}
               </nav>
             </div>
 
             <div className="flex items-center space-x-4">
+              <LanguageSwitcher />
               <div className="flex items-center space-x-2">
                 <User className="h-5 w-5 text-gray-500" />
                 <span className="text-sm font-medium text-gray-700">{user?.fullName}</span>

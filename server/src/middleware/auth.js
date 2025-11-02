@@ -28,6 +28,7 @@ const protect = async (req, res, next) => {
           fullName: true,
           companyName: true,
           phone: true,
+          role: true,
         },
       });
 
@@ -47,4 +48,14 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+// Middleware to check if user is admin
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.role && req.user.role.toUpperCase() === 'ADMIN') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. Admin only.' });
+  }
+};
+
+module.exports = { protect, isAdmin };
+

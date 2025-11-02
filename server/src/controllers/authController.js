@@ -5,7 +5,7 @@ const { generateToken } = require('../utils/generateToken');
 const prisma = new PrismaClient();
 
 /**
- * @desc    Register new user
+ * @desc    Register new user  
  * @route   POST /api/auth/register
  * @access  Public
  */
@@ -46,6 +46,7 @@ const register = async (req, res) => {
         fullName: true,
         companyName: true,
         phone: true,
+        role: true,
         createdAt: true,
       },
     });
@@ -103,6 +104,7 @@ const login = async (req, res) => {
         fullName: user.fullName,
         companyName: user.companyName,
         phone: user.phone,
+        role: user.role,
       },
       token,
     });
