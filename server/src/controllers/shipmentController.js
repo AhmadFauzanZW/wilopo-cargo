@@ -4,14 +4,63 @@ const { generateTrackingNumber } = require('../utils/generateTrackingNumber');
 const prisma = new PrismaClient();
 
 /**
- * @desc    Get all shipments for logged-in user
+ * @desc    Get all shipments for logged-in user with advanced filtering
  * @route   GET /api/shipments
  * @access  Private
  */
 const getShipments = async (req, res) => {
   try {
+    const {
+      status,
+      search,
+      dateFrom,
+      dateTo,
+      sortBy = 'createdAt',
+      sortOrder = 'desc',
+      page = 1,
+      limit = 10,
+    } = req.query;
+
+    // Build where clause
+    const where = { userId: req.user.id };
+
+    // Filter by status
+    if (status && status !== 'all') {
+      where.status = status;
+    }
+
+    // Search by tracking number, origin, or destination
+    if (search) {
+      where.OR = [
+        { trackingNumber: { contains: search, mode: 'insensitive' } },
+        { origin: { contains: search, mode: 'insensitive' } },
+        { destination: { contains: search, mode: 'insensitive' } },
+        { senderName: { contains: search, mode: 'insensitive' } },
+        { receiverName: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    // Filter by date range
+    if (dateFrom || dateTo) {
+      where.createdAt = {};
+      if (dateFrom) {
+        where.createdAt.gte = new Date(dateFrom);
+      }
+      if (dateTo) {
+        where.createdAt.lte = new Date(dateTo);
+      }
+    }
+
+    // Calculate pagination
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const take = parseInt(limit);
+
+    // Get total count for pagination
+    const total = await prisma.shipment.count({ where });
+
+    // Get shipments with filters and pagination
     const shipments = await prisma.shipment.findMany({
-      where: { userId: req.user.id },
+      where,
       include: {
         documents: {
           select: {
@@ -26,10 +75,20 @@ const getShipments = async (req, res) => {
           take: 1,
         },
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { [sortBy]: sortOrder },
+      skip,
+      take,
     });
 
-    res.json(shipments);
+    res.json({
+      shipments,
+      pagination: {
+        total,
+        page: parseInt(page),
+        limit: parseInt(limit),
+        pages: Math.ceil(total / parseInt(limit)),
+      },
+    });
   } catch (error) {
     console.error('Get shipments error:', error);
     res.status(500).json({ message: 'Server error fetching shipments' });

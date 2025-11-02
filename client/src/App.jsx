@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 
 // Pages
 import Login from './pages/Login';
@@ -8,6 +9,9 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ShipmentDetail from './pages/ShipmentDetail';
 import Calculator from './pages/Calculator';
+import Analytics from './pages/Analytics';
+import AdminDashboard from './pages/AdminDashboard';
+import UserManagement from './pages/UserManagement';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -22,6 +26,12 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/shipments/:id" element={<ShipmentDetail />} />
             <Route path="/calculator" element={<Calculator />} />
+          </Route>
+          
+          <Route element={<AdminRoute />}>
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/users" element={<UserManagement />} />
           </Route>
           
           <Route path="/" element={<Navigate to="/dashboard" replace />} />

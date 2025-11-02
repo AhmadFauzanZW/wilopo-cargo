@@ -12,13 +12,24 @@
 
 ## ✨ Features
 
-- � **Secure Authentication** - JWT-based login and registration
+### Core Features
+- 🔐 **Secure Authentication** - JWT-based login and registration
 - 📊 **Interactive Dashboard** - Real-time shipment statistics and overview
 - 🚚 **Shipment Tracking** - Detailed tracking with visual timeline
 - 📄 **Document Management** - Upload, view, and download shipment documents
 - 💰 **Cost Calculator** - Instant import cost estimation with detailed breakdown
 - 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
 - 🎨 **Modern UI** - Clean, intuitive interface built with Tailwind CSS
+
+### ⚡ Advanced Features (NEW)
+- ✅ 📧 **Email Notifications** - Automated emails for status updates, welcome messages, and document uploads
+- ✅ 🔍 **Advanced Search & Filtering** - Search by tracking number, filter by status, date range, with pagination
+- ✅ 📑 **PDF/Excel Export** - Export shipment reports and detailed shipment information
+- ✅ 👤 **Role-Based Access Control** - Admin and customer user roles with different permissions
+- ✅ 🔔 **In-App Notifications** - Real-time notification system with read/unread status
+- ✅ 🌍 **Multi-language Support** - Full English/Indonesian (EN/ID) interface
+- ✅ 📊 **Analytics Dashboard** - Comprehensive charts and statistics with Recharts
+- ✅ 🛡️ **Admin Panel** - Complete user management and system administration
 
 ## 🎥 Screenshots
 
@@ -47,6 +58,9 @@ A comprehensive customer portal that enables Wilopo Cargo customers to:
 - Tailwind CSS for styling
 - React Router for navigation
 - Axios for API calls
+- React-i18next for internationalization
+- Recharts for data visualization
+- Lucide React for icons
 
 ### Backend
 - Node.js + Express.js
@@ -54,6 +68,11 @@ A comprehensive customer portal that enables Wilopo Cargo customers to:
 - Prisma ORM
 - JWT authentication
 - bcrypt for password hashing
+- Nodemailer for email notifications
+- PDFKit for PDF generation
+- ExcelJS for Excel export
+- Helmet for security headers
+- Morgan for logging
 
 ## 📁 Project Structure
 
@@ -146,6 +165,44 @@ For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
 - ✅ Import Cost Calculator
 - ✅ Responsive Mobile Design
 
+### Advanced Features
+- ✅ Email Notification System
+- ✅ Welcome Emails on Registration
+- ✅ Status Update Email Alerts
+- ✅ Document Upload Notifications
+- ✅ In-App Notification Center
+- ✅ Advanced Search & Filtering
+- ✅ Filter by Status, Date Range
+- ✅ Search by Tracking/Origin/Destination
+- ✅ Sorting & Pagination
+- ✅ PDF Export (All Shipments)
+- ✅ PDF Export (Single Shipment Detail)
+- ✅ Excel Export (All Shipments)
+- ✅ Excel Export (Single Shipment Detail)
+- ✅ Role-Based Access Control
+- ✅ Multi-language Support (EN/ID)
+- ✅ Language Switcher Component
+- ✅ Internationalized UI
+- ✅ Analytics Dashboard with Charts
+- ✅ Revenue Statistics
+- ✅ Shipment Trends Visualization
+- ✅ Admin Panel (Full UI)
+- ✅ User Management Interface
+- ✅ Admin Dashboard
+- ✅ System-wide Statistics
+
+### Future Enhancements
+- ⏳ Real-time Chat Support
+- ⏳ SMS Notifications
+- ⏳ Push Notifications
+- ⏳ Mobile App (React Native)
+- ⏳ QR Code Tracking
+- ⏳ Barcode Scanning
+- ⏳ GPS Tracking Integration
+- ⏳ Payment Gateway Integration
+- ⏳ Multi-currency Support
+- ⏳ Customs Clearance Tracking
+
 ### Security Features
 - ✅ Password Hashing (bcrypt)
 - ✅ Protected API Routes
@@ -153,16 +210,19 @@ For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)
 - ✅ CORS Configuration
 - ✅ Security Headers (Helmet)
 - ✅ File Upload Validation
+- ✅ Role-Based Authorization
 
 ## 📚 Documentation
 
-- [� Documentation Index](DOCUMENTATION_INDEX.md) - **Start here!** Complete guide to all docs
-- [�📖 Setup Guide](SETUP_GUIDE.md) - Detailed installation instructions
+- [📚 Documentation Index](DOCUMENTATION_INDEX.md) - **Start here!** Complete guide to all docs
+- [🎬 Demo Flow Guide](DEMO_FLOW.md) - **NEW!** User & Admin demo workflows
+- [📖 Setup Guide](SETUP_GUIDE.md) - Detailed installation instructions
 - [📡 API Documentation](API_DOCUMENTATION.md) - Complete API reference
 - [📋 Project Summary](PROJECT_SUMMARY.md) - Implementation details
 - [📁 File Structure](FILE_STRUCTURE.md) - Code organization
 - [🧪 Testing Checklist](TESTING_CHECKLIST.md) - QA procedures
 - [📝 Project Brief](project-brief.md) - Original specification
+- [⚡ Advanced Features Summary](ADVANCED_FEATURES_SUMMARY.md) - Guide to advanced features
 
 ## 🧪 Demo Data
 
