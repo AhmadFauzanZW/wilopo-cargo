@@ -6,6 +6,7 @@ import {
 } from 'recharts';
 import { Package, TrendingUp, Clock, DollarSign } from 'lucide-react';
 import axios from 'axios';
+import AdminLayout from '../components/AdminLayout';
 
 const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444'];
 
@@ -46,18 +47,21 @@ const Analytics = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
+      <AdminLayout>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="space-y-6 m-6 mx-16">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">{t('admin.analytics')}</h1>
-        <p className="mt-1 text-sm text-gray-600">{t('admin.analyticsDesc')}</p>
-      </div>
+    <AdminLayout>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">{t('admin.analytics')}</h1>
+          <p className="mt-1 text-sm text-gray-600">{t('admin.analyticsDesc')}</p>
+        </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -231,7 +235,8 @@ const Analytics = () => {
           </ResponsiveContainer>
         </div>
       </div>
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 

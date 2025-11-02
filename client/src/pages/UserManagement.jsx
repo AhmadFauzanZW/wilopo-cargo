@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, Search, Mail, Shield, Calendar } from 'lucide-react';
 import axios from 'axios';
+import AdminLayout from '../components/AdminLayout';
 
 const UserManagement = () => {
   const { t } = useTranslation();
@@ -59,20 +60,23 @@ const UserManagement = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
+      <AdminLayout>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="space-y-6 m-6 mx-16">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">{t('admin.userManagement')}</h1>
-          <p className="mt-1 text-sm text-gray-600">{t('admin.userManagementDesc')}</p>
-        </div>
-        <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow">
+    <AdminLayout>
+      <div className="space-y-6">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">{t('admin.userManagement')}</h1>
+            <p className="mt-1 text-sm text-gray-600">{t('admin.userManagementDesc')}</p>
+          </div>
+          <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow">
           <Users className="h-5 w-5 text-gray-500" />
           <span className="text-sm font-medium text-gray-700">
             {filteredUsers.length} {t('common.users')}
@@ -182,7 +186,8 @@ const UserManagement = () => {
           <p className="mt-1 text-sm text-gray-500">{t('common.tryDifferentSearch')}</p>
         </div>
       )}
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 

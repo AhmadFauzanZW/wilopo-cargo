@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Package, Calculator, LogOut, User, BarChart3, Shield } from 'lucide-react';
+import { Calculator, LogOut, User, BarChart3, Shield } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import logoColor from '../assets/logo-wilopo-color.png';
 
 const Layout = ({ children }) => {
   const { user, logout } = useAuth();
@@ -19,9 +20,8 @@ const Layout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
-              <Link to="/dashboard" className="flex items-center space-x-2">
-                <Package className="h-8 w-8 text-primary-600" />
-                <span className="text-xl font-bold text-gray-900">Wilopo Cargo</span>
+              <Link to="/dashboard" className="flex items-center space-x-3">
+                <img src={logoColor} alt="Wilopo Cargo" className="h-10 w-auto" />
               </Link>
               
               <nav className="hidden md:flex space-x-4">

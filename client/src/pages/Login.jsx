@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Package, Mail, Lock } from 'lucide-react';
+import { Mail, Lock } from 'lucide-react';
 import Alert from '../components/Alert';
 import LoadingSpinner from '../components/LoadingSpinner';
+import logoColor from '../assets/logo-wilopo-color.png';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,19 @@ const Login = () => {
     const result = await login(formData.email, formData.password);
     
     if (result.success) {
-      navigate('/dashboard');
+      // Get user from localStorage to check role
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        // Redirect based on role
+        if (user.role?.toUpperCase() === 'ADMIN') {
+          navigate('/admin');
+        } else {
+          navigate('/dashboard');
+        }
+      } else {
+        navigate('/dashboard');
+      }
     } else {
       setError(result.message);
     }
@@ -41,16 +54,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="bg-primary-600 p-3 rounded-full">
-              <Package className="h-12 w-12 text-white" />
-            </div>
+            <img src={logoColor} alt="Wilopo Cargo" className="h-16 w-auto" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Wilopo Cargo</h1>
+          <h1 className="text-3xl font-bold text-blue-900">Wilopo Cargo</h1>
           <p className="text-gray-600 mt-2">Sign in to your account</p>
         </div>
 

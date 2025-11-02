@@ -11,7 +11,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="relative inline-block">
       <button
-        className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 text-sm text-white hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
         onClick={() => changeLanguage(i18n.language === 'en' ? 'id' : 'en')}
       >
         <Globe className="h-5 w-5" />

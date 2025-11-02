@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Users, Package, TrendingUp, DollarSign, BarChart3 } from 'lucide-react';
 import axios from 'axios';
+import AdminLayout from '../components/AdminLayout';
 
 const AdminDashboard = () => {
   const { t } = useTranslation();
@@ -52,14 +53,17 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
+      <AdminLayout>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="space-y-6 m-6 mx-16">
+    <AdminLayout>
+      <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">{t('admin.dashboard')}</h1>
         <p className="mt-1 text-sm text-gray-600">{t('admin.dashboardDesc')}</p>
@@ -201,7 +205,8 @@ const AdminDashboard = () => {
           </table>
         </div>
       </div>
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 
