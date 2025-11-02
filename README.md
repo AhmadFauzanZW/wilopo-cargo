@@ -33,14 +33,27 @@
 
 ## 🎥 Screenshots
 
-### Dashboard
+### User Role
+
+#### Dashboard
 ![Dashboard](docs/screenshots/dashboard.png)
 
-### Shipment Detail
+#### Shipment Detail
 ![Shipment Detail](docs/screenshots/shipment-detail.png)
 
-### Cost Calculator
+#### Cost Calculator
 ![Calculator](docs/screenshots/calculator.png)
+
+### Admin Role
+
+#### Admin Dashboard
+![Admin Dashboard](docs/screenshots/adminDashboard.png)
+
+#### User Management
+![User Management](docs/screenshots/userManagement.png)
+
+#### Analytics
+![Analytics](docs/screenshots/analytics.png)
 
 ## 🚀 Project Overview
 
