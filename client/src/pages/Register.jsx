@@ -78,7 +78,6 @@ const Register = () => {
           <div className="flex justify-center mb-4">
             <img src={logoColor} alt="Wilopo Cargo" className="h-16 w-auto" />
           </div>
-          <h1 className="text-3xl font-bold text-blue-900">Wilopo Cargo</h1>
           <p className="text-gray-600 mt-2">Create your account</p>
         </div>
 

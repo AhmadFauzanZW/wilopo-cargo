@@ -33,6 +33,15 @@
 
 ## 🎥 Screenshots
 
+### Login & Register
+
+#### Login
+![Login Page](<login.png>)
+
+#### Register
+![Register Page](register.png)
+
+
 ### User Role
 
 #### Dashboard
@@ -43,6 +52,7 @@
 
 #### Cost Calculator
 ![Calculator](docs/screenshots/calculator.png)
+
 
 ### Admin Role
 
