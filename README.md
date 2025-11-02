@@ -36,7 +36,7 @@
 ### Login & Register
 
 #### Login
-![Login Page](<login.png>)
+![Login Page](login.png)
 
 #### Register
 ![Register Page](register.png)
